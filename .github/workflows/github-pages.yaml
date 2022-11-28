@@ -23,7 +23,7 @@ jobs:
           ls -alhrt;
           git lfs uninstall;
           rm .gitattributes;
-          touch .lfs-files
+          touch .lfs-files;
           git lfs ls-files | cut -f3 -d' ' | while read filename;
           do
             git rm --cached "$filename";
