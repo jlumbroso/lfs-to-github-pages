@@ -1,7 +1,5 @@
 # LFS to GitHub Pages prototype
 
-Prototype of a solution to deploy LFS files on GitHub Pages.
-
 GitHub Pages doesn't serve files that are stored in LFS, even though [this has been consistently requested for years](https://github.com/git-lfs/git-lfs/issues/1342). This is understandable: **It would instantly turn GitHub Pages from the world's largest code hosting service to the world's largest file hosting service.**
 
 That said this repository showcases a simple work-around...
@@ -13,7 +11,7 @@ This repository has been configured to store `*.webp` files with Git LFS.
 This is the file `image.webp` as stored in the `main` branch:
 ![The `image.webp` stored in branch `main` *IS* stored through LFS.](https://raw.githubusercontent.com/jlumbroso/lfs-to-github-pages/main/screenshots/screenshot-main-lfs.png "Screenshot of branch `main`")
 
-After GitHub Actions continuous integration, this is the file `image.webp` as stored in the `gh-pages` branch:
+After GitHub Actions' continuous integration, this is the file `image.webp` as stored in the `gh-pages` branch:
 ![The `image.webp` stored in branch `main` is *NOT* stored through LFS.](https://raw.githubusercontent.com/jlumbroso/lfs-to-github-pages/main/screenshots/screenshot-gh-pages-not-lfs.png "Screenshot of branch `gh-pages`")
 
 ## How It Works
@@ -29,25 +27,25 @@ After GitHub Actions continuous integration, this is the file `image.webp` as st
 
 2. We remove the Git LFS hooks, and then remove all the Git metadata associated with the repository:
 
-```yaml
-# REF: https://github.com/git-lfs/git-lfs/issues/3026#issue-326390969
-# REF: https://stackoverflow.com/a/50177571/408734
-- name: Turn off LFS
-run: >-
-    git lfs uninstall;
-    rm -Rf .git;
-    rm .gitattributes;
-```
+   ```yaml
+   # REF: https://github.com/git-lfs/git-lfs/issues/3026#issue-326390969
+   # REF: https://stackoverflow.com/a/50177571/408734
+   - name: Turn off LFS
+   run: >-
+       git lfs uninstall;
+       rm -Rf .git;
+       rm .gitattributes;
+   ```
 
 3. We deploy the files we have checked out (including the files stored through Git LFS) to the `gh-pages` branch:
 
-```yaml
-- name: Deploy to gh-pages branch
-uses: peaceiris/actions-gh-pages@v3.9.0
-with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
-    publish_dir: ./
-    publish_branch: gh-pages
-    user_name: "github-actions[bot]"
-    user_email: "github-actions[bot]@users.noreply.github.com"
-```
+   ```yaml
+   - name: Deploy to gh-pages branch
+   uses: peaceiris/actions-gh-pages@v3.9.0
+   with:
+       github_token: ${{ secrets.GITHUB_TOKEN }}
+       publish_dir: ./
+       publish_branch: gh-pages
+       user_name: "github-actions[bot]"
+       user_email: "github-actions[bot]@users.noreply.github.com"
+   ```

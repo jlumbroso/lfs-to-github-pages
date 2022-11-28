@@ -14,8 +14,6 @@ jobs:
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
           lfs: true # Fetch large files
 
-      # REF: https://github.com/git-lfs/git-lfs/issues/3026#issue-326390969
-      # REF: https://stackoverflow.com/a/50177571/408734
       - name: Turn off LFS
         run: >-
           git lfs uninstall;
