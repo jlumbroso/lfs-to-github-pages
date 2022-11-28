@@ -56,6 +56,6 @@ https://jlumbroso.github.io/lfs-to-github-pages/image.webp
 
 ## Copyright & License
 
-The image "_Robots Cutting Books_" is copyrighted 2022 by the artist, Jérémie Lumbroso, and is made available here under the [CC BY-ND 4.0](https://creativecommons.org/licenses/by/4.0/) license, which means you can distribute it, with attribution, for any purpose, as long as you don't distribute modified versions of it.
+The image "_Robots Cutting Books_" is copyrighted 2022 by the artist, Jérémie Lumbroso, and is made available here under the [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/) license, which means you can distribute it, with attribution, for any purpose, as long as you don't distribute modified versions of it.
 
 The code in this repository is provided under the MIT license.
