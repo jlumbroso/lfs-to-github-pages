@@ -2,8 +2,18 @@
 
 Prototype of a solution to deploy LFS files on GitHub Pages.
 
-![The `image.webp` stored in branch `main` *IS* stored through LFS.](https://raw.githubusercontent.com/jlumbroso/lfs-to-github-pages/main/screenshots/screenshot-gh-pages-not-lfs.png "Screenshot of branch `main`")
+GitHub Pages doesn't serve files that are stored in LFS, even though [this has been consistently requested for years](https://github.com/git-lfs/git-lfs/issues/1342). This is understandable: **It would instantly turn GitHub Pages from the world's largest code hosting service to the world's largest file hosting service.**
 
+That said this repository showcases a simple work-around...
+
+## Demo
+
+This repository has been configured to store `*.webp` files with Git LFS.
+
+This is the file `image.webp` as stored in the `main` branch:
+![The `image.webp` stored in branch `main` *IS* stored through LFS.](https://raw.githubusercontent.com/jlumbroso/lfs-to-github-pages/main/screenshots/screenshot-main-lfs.png "Screenshot of branch `main`")
+
+After GitHub Actions continuous integration, this is the file `image.webp` as stored in the `gh-pages` branch:
 ![The `image.webp` stored in branch `main` is *NOT* stored through LFS.](https://raw.githubusercontent.com/jlumbroso/lfs-to-github-pages/main/screenshots/screenshot-gh-pages-not-lfs.png "Screenshot of branch `gh-pages`")
 
 ## How It Works
