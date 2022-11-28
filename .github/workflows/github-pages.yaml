@@ -29,9 +29,15 @@ jobs:
             git add "$filename";
           done;
 
+          echo "before stash:";
+          ls -alhrt;
           git stash;
+          echo "after stash:";
+          ls -alhrt;
           git checkout -b gh-pages;
           git stash pop;
+          echo "after pop:";
+          ls -alhrt;
           git add *;
           git commit -m "Update";
 
