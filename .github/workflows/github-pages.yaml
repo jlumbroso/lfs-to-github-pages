@@ -20,40 +20,15 @@ jobs:
         run: >-
           git config --global user.email "github-actions[bot]@users.noreply.github.com";
           git config --global user.name "github-actions[bot]";
-          ls -alhrt;
           git lfs uninstall;
+          rm -Rf .git;
           rm .gitattributes;
-          touch .lfs-files;
-          git lfs ls-files | cut -f3 -d' ' | while read filename;
-          do
-            git rm --cached "$filename";
-            git add "$filename";
-            echo "$filename" >> .lfs-files;
-          done;
 
-          echo "before stash:";
-          ls -alhrt;
-          git stash;
-          echo "after stash:";
-          ls -alhrt;
-          git checkout -b gh-pages;
-          git stash pop;
-          echo "after pop:";
-          ls -alhrt;
-          echo "content of .lfs-files:";
-          cat .lfs-files;
-          git status;
-          git add *;
-          cat .lfs-files | while read filename;
-          do
-            git add "$filename";
-          done;
-          git commit -m "Update";
-
-      # - name: Deploy to gh-pages branch
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_branch: gh-pages
-      #     user_name: "github-actions[bot]"
-      #     user_email: "github-actions[bot]@users.noreply.github.com"
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
