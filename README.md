@@ -9,10 +9,16 @@ That said this repository showcases a simple work-around...
 This repository has been configured to store `*.webp` files with Git LFS.
 
 This is the file `image.webp` as stored in the `main` branch:
+
 ![The `image.webp` stored in branch `main` *IS* stored through LFS.](https://raw.githubusercontent.com/jlumbroso/lfs-to-github-pages/main/screenshots/screenshot-main-lfs.png "Screenshot of branch `main`")
 
 After GitHub Actions' continuous integration, this is the file `image.webp` as stored in the `gh-pages` branch:
+
 ![The `image.webp` stored in branch `main` is *NOT* stored through LFS.](https://raw.githubusercontent.com/jlumbroso/lfs-to-github-pages/main/screenshots/screenshot-gh-pages-not-lfs.png "Screenshot of branch `gh-pages`")
+
+You can confirm that this file is being served through GitHub Pages:
+
+https://jlumbroso.github.io/lfs-to-github-pages/
 
 ## How It Works
 
