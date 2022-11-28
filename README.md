@@ -18,7 +18,7 @@ After GitHub Actions' continuous integration, this is the file `image.webp` as s
 
 You can confirm that this file is being served through GitHub Pages:
 
-https://jlumbroso.github.io/lfs-to-github-pages/
+https://jlumbroso.github.io/lfs-to-github-pages/image.webp
 
 ## How It Works
 

@@ -9,13 +9,13 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      - 🛎️ Checkout
+      - name: 🛎️ Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
           lfs: true # Fetch large files
 
-      - name: Turn off LFS
+      - name: ❌ Turn off LFS
         run: >-
           git lfs uninstall;
           rm -Rf .git;
@@ -30,3 +30,6 @@ jobs:
           git-config-name: "github-actions[bot]"
           git-config-email: "github-actions[bot]@users.noreply.github.com"
           commit-message: "🚀 Deployed using `JamesIves/github-pages-deploy-action"
+
+          # Create a single commit on the target branch instead of pushing individual commits for each file.
+          ## single-commit: true
