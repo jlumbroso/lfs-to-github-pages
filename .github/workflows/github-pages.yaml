@@ -41,7 +41,6 @@ jobs:
           echo "after pop:";
           ls -alhrt;
           git add *;
-          git rm .lfs-files;
           cat .lfs-files | while read filename;
           do
             git add "$filename";
