@@ -19,8 +19,7 @@ jobs:
       - name: Turn off LFS
         run: >-
           git lfs uninstall;
-          grep -v "filter=lfs" .gitattributes > .gitattributes.tmp;
-          mv .gitattributes.tmp .gitattributes;
+          rm .gitattributes;
           git lfs ls-files | cut -f3 -d' ' | while read filename;
           do
             git rm --cached "$filename";
