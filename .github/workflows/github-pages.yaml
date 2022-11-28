@@ -20,7 +20,7 @@ jobs:
         run: >-
           git config --global user.email "github-actions[bot]@users.noreply.github.com";
           git config --global user.name "github-actions[bot]";
-
+          ls -alhrt;
           git lfs uninstall;
           rm .gitattributes;
           git lfs ls-files | cut -f3 -d' ' | while read filename;
