@@ -23,10 +23,12 @@ jobs:
           ls -alhrt;
           git lfs uninstall;
           rm .gitattributes;
+          touch .lfs-files
           git lfs ls-files | cut -f3 -d' ' | while read filename;
           do
             git rm --cached "$filename";
             git add "$filename";
+            echo "$filename" >> .lfs-files;
           done;
 
           echo "before stash:";
@@ -39,6 +41,11 @@ jobs:
           echo "after pop:";
           ls -alhrt;
           git add *;
+          git rm .lfs-files;
+          cat .lfs-files | while read filename;
+          do
+            git add "$filename";
+          done;
           git commit -m "Update";
 
       # - name: Deploy to gh-pages branch
