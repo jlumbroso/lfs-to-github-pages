@@ -40,6 +40,8 @@ jobs:
           git stash pop;
           echo "after pop:";
           ls -alhrt;
+          echo "content of .lfs-files:";
+          cat .lfs-files;
           git add *;
           cat .lfs-files | while read filename;
           do
