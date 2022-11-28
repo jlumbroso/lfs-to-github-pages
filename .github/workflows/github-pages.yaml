@@ -5,6 +5,9 @@ on:
     branches:
       - main # Set a branch to deploy
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-22.04
@@ -22,14 +25,10 @@ jobs:
           rm .gitattributes;
 
       - name: 🚀 Deploy to `gh-pages` branch
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3.9.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          folder: ./ # The folder the action should deploy.
-          branch: gh-pages # The branch the action should deploy to.
-          git-config-name: "github-actions[bot]"
-          git-config-email: "github-actions[bot]@users.noreply.github.com"
-          commit-message: "🚀 Deployed using `JamesIves/github-pages-deploy-action"
-
-          # Create a single commit on the target branch instead of pushing individual commits for each file.
-          ## single-commit: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
