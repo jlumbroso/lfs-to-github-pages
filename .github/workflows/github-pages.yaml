@@ -9,7 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - 🛎️ Checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
           lfs: true # Fetch large files
@@ -20,11 +21,12 @@ jobs:
           rm -Rf .git;
           rm .gitattributes;
 
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3.9.0
+      - name: 🚀 Deploy to `gh-pages` branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          publish_branch: gh-pages
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          folder: ./ # The folder the action should deploy.
+          branch: gh-pages # The branch the action should deploy to.
+          git-config-name: "github-actions[bot]"
+          git-config-email: "github-actions[bot]@users.noreply.github.com"
+          commit-message: "🚀 Deployed using `JamesIves/github-pages-deploy-action"
