@@ -42,6 +42,7 @@ jobs:
           ls -alhrt;
           echo "content of .lfs-files:";
           cat .lfs-files;
+          git status;
           git add *;
           cat .lfs-files | while read filename;
           do
