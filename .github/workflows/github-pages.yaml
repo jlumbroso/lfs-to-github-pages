@@ -15,19 +15,28 @@ jobs:
           lfs: true # Fetch large files
 
       # REF: https://github.com/git-lfs/git-lfs/issues/3026#issue-326390969
+      # REF: https://stackoverflow.com/a/50177571/408734
       - name: Turn off LFS
         run: >-
           git lfs uninstall;
+          grep -v "filter=lfs" .gitattributes > .gitattributes.tmp;
+          mv .gitattributes.tmp .gitattributes;
           git lfs ls-files | cut -f3 -d' ' | while read filename;
           do
             git rm --cached "$filename";
             git add "$filename";
-          done
+          done;
 
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
+          git stash;
+          git checkout -b gh-pages;
+          git stash pop;
+          git add *;
+          git commit -m "Update";
+
+      # - name: Deploy to gh-pages branch
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_branch: gh-pages
+      #     user_name: "github-actions[bot]"
+      #     user_email: "github-actions[bot]@users.noreply.github.com"
