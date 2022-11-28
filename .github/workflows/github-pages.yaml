@@ -14,8 +14,15 @@ jobs:
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
           lfs: true # Fetch large files
 
+      # REF: https://github.com/git-lfs/git-lfs/issues/3026#issue-326390969
       - name: Turn off LFS
-        run: git lfs uninstall
+        run: >-
+          git lfs uninstall;
+          git lfs ls-files | cut -f3 -d' ' | while read filename;
+          do
+            git rm --cached "$filename";
+            git add "$filename";
+          done
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
