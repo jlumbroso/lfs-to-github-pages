@@ -2,9 +2,9 @@
 
 Prototype of a solution to deploy LFS files on GitHub Pages.
 
-![The `image.webp` stored in branch `main` *IS* stored through LFS.](/screenshot/screenshot-main-lfs.png?raw=true "Screenshot of branch `main`")
+![The `image.webp` stored in branch `main` *IS* stored through LFS.](https://raw.githubusercontent.com/jlumbroso/lfs-to-github-pages/main/screenshots/screenshot-gh-pages-not-lfs.png "Screenshot of branch `main`")
 
-![The `image.webp` stored in branch `main` is *NOT* stored through LFS.](/screenshot/screenshot-gh-pages-not-lfs.png?raw=true "Screenshot of branch `gh-pages`")
+![The `image.webp` stored in branch `main` is *NOT* stored through LFS.](https://raw.githubusercontent.com/jlumbroso/lfs-to-github-pages/main/screenshots/screenshot-gh-pages-not-lfs.png "Screenshot of branch `gh-pages`")
 
 ## How It Works
 
