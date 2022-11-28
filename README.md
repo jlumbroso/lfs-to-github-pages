@@ -28,8 +28,6 @@ After GitHub Actions' continuous integration, this is the file `image.webp` as s
 2. We remove the Git LFS hooks, and then remove all the Git metadata associated with the repository:
 
    ```yaml
-   # REF: https://github.com/git-lfs/git-lfs/issues/3026#issue-326390969
-   # REF: https://stackoverflow.com/a/50177571/408734
    - name: Turn off LFS
    run: >-
        git lfs uninstall;
@@ -49,3 +47,9 @@ After GitHub Actions' continuous integration, this is the file `image.webp` as s
        user_name: "github-actions[bot]"
        user_email: "github-actions[bot]@users.noreply.github.com"
    ```
+
+## Copyright & License
+
+The image "_Robots Cutting Books_" is copyrighted 2022 by the artist, Jérémie Lumbroso, and is made available here under the [CC BY-ND 4.0](https://creativecommons.org/licenses/by/4.0/) license, which means you can distribute it, with attribution, for any purpose, as long as you don't distribute modified versions of it.
+
+The code in this repository is provided under the MIT license.
