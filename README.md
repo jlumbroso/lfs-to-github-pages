@@ -2,7 +2,9 @@
 
 GitHub Pages doesn't serve files that are stored in LFS, even though [this has been consistently requested for years](https://github.com/git-lfs/git-lfs/issues/1342). This is understandable: **It would instantly turn GitHub Pages from the world's largest code hosting service to the world's largest file hosting service.**
 
-That said this repository showcases a simple work-around...
+That said this repository showcases a simple partial work-around: **How to serve LFS files through GitHub Pages (within [GitHub's file size limits](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github#about-size-limits-on-github))?**
+
+A typical use case is when you would like to use LFS to track large, 10-100 MB, binary files (`.pdf`, `.jpg`, `.png`, `.mp3`, `.mp4`, etc.) so they don't weigh down the commit history — but you would also like to serve these files through GitHub Pages.
 
 ## Demo
 
