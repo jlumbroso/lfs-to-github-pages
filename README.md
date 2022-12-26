@@ -6,6 +6,8 @@ That said this repository showcases a simple partial work-around: **How to serve
 
 A typical use case is when you would like to use LFS to track large, 10-100 MB, binary files (`.pdf`, `.jpg`, `.png`, `.mp3`, `.mp4`, etc.) so they don't weigh down the commit history — but you would also like to serve these files through GitHub Pages.
 
+⚠️ Please note that this technological demo, which has been reviewed by GitHub Trust & Safety, is in no way intended to circumvent [GitHub Pages' Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-for-additional-products-and-features#pages) and must only be used [within GitHub Pages' usage limits](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#limits-on-use-of-github-pages) (_e.g._, at the time of writing, a hard limit of 1 GB of storage per repository, and a soft limit of 100 GB/month of bandwith).
+
 ## Demo
 
 This repository has been configured to store `*.webp` files with Git LFS.
@@ -27,8 +29,9 @@ https://jlumbroso.github.io/lfs-to-github-pages/image.webp
 1. First, the continuous integration fetches the latest version of the repository's `main` branch, fetching the files stored through Git-LFS:
 
    ```yaml
-   - uses: actions/checkout@v3
-   with:
+   - name: 🛎️ Checkout
+     uses: actions/checkout@v3
+     with:
        fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
        lfs: true # Fetch large files
    ```
@@ -36,8 +39,8 @@ https://jlumbroso.github.io/lfs-to-github-pages/image.webp
 2. We remove the Git LFS hooks, and then remove all the Git metadata associated with the repository:
 
    ```yaml
-   - name: Turn off LFS
-   run: >-
+   - name: ❌ Turn off LFS
+     run: >-
        git lfs uninstall;
        rm -Rf .git;
        rm .gitattributes;
@@ -46,9 +49,9 @@ https://jlumbroso.github.io/lfs-to-github-pages/image.webp
 3. We deploy the files we have checked out (including the files stored through Git LFS) to the `gh-pages` branch:
 
    ```yaml
-   - name: Deploy to gh-pages branch
-   uses: peaceiris/actions-gh-pages@v3.9.0
-   with:
+   - name: 🚀 Deploy to `gh-pages` branch
+     uses: peaceiris/actions-gh-pages@v3.9.0
+     with:
        github_token: ${{ secrets.GITHUB_TOKEN }}
        publish_dir: ./
        publish_branch: gh-pages
